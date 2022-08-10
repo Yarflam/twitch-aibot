@@ -1,0 +1,31 @@
+{
+    "parserOptions": {
+        "ecmaVersion": 8,
+        "sourceType": "module",
+        "ecmaFeatures": {}
+    },
+    "plugins": [],
+    "env": {
+        "es6": true,
+        "browser": false,
+        "node": true,
+        "mocha": false
+    },
+    "globals": {},
+    "extends": ["eslint:recommended"],
+    "rules": {
+        "no-console": "off",
+        "indent": ["error", 4, { "SwitchCase": 1 }],
+        "linebreak-style": ["error", "unix"],
+        "quotes": ["error", "single"],
+        "react/prop-types": 0,
+        "comma-dangle": ["error", "never"]
+    },
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "extensions": [".js", ".jsx", ".mjs", ".cjs"]
+            }
+        }
+    }
+}

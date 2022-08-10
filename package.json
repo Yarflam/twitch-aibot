@@ -1,0 +1,33 @@
+{
+    "name": "twitch-aibot",
+    "version": "1.0.0",
+    "description": "Twitch AI bot",
+    "main": "index.mjs",
+    "scripts": {
+        "start": "npm run analyze",
+        "analyze": "node ./index.mjs analyze",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://yarflam@github.com/Yarflam/twitch-aibot.git"
+    },
+    "keywords": [
+        "twitch",
+        "ai",
+        "ban",
+        "messages"
+    ],
+    "author": "Yarflam",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/Yarflam/twitch-aibot/issues"
+    },
+    "homepage": "https://github.com/Yarflam/twitch-aibot#readme",
+    "dependencies": {
+        "dotenv": "^16.0.1",
+        "eslint": "^8.21.0",
+        "mongodb": "^4.8.1",
+        "prettier": "^2.7.1"
+    }
+}

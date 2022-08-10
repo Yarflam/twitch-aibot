@@ -1,0 +1,9 @@
+.env
+.tmp
+
+node_modules
+package-lock.json
+yarn.lock
+
+data/**/*
+!data/.gitkeep
