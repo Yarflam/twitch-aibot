@@ -30,12 +30,37 @@ node index.mjs analyze # or directly
 _messages_
 
 -   id
--   userInfo
--   message
--   userState
 -   channelId
--   expiresAt
+-   message
 -   date
+-   expiresAt
+-   userInfo
+    -   displayName
+    -   subTypes
+    -   type
+    -   username
+-   userState
+    -   badge-info
+    -   badge-info-raw
+    -   badges
+    -   badges-raw
+    -   color
+    -   display-name
+    -   emotes
+    -   emotes-raw
+    -   first-msg
+    -   flags
+    -   id
+    -   message-type
+    -   mod
+    -   returning-chatter
+    -   room-id
+    -   subscriber
+    -   tmi-sent-ts
+    -   turbo
+    -   user-id
+    -   user-type
+    -   username
 
 _timeouts_
 

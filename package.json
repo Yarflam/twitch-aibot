@@ -25,6 +25,8 @@
     },
     "homepage": "https://github.com/Yarflam/twitch-aibot#readme",
     "dependencies": {
+        "colors": "^1.4.0",
+        "date-format": "^4.0.13",
         "dirfilename": "^1.1.1",
         "dotenv": "^16.0.1",
         "eslint": "^8.21.0",

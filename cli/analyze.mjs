@@ -1,14 +1,22 @@
 import dbConnect from './database.mjs';
+import dateFormat from 'date-format';
 import path from 'path';
 import fs from 'fs';
+import 'colors';
 
 async function analyze({ dataPath }) {
     const db = await dbConnect();
     const data10k = await extract10k({ db, dataPath });
     const bestChan = await extractChans({ data10k });
-    console.log(`Chan ${bestChan[0]}: ${bestChan[1]} entries`);
+    console.log(
+        'Chan ' +
+            String(bestChan[0]).white +
+            ': ' +
+            String(bestChan[1]).blue +
+            ' entries'
+    );
     const { users } = await extractUsersMsg(bestChan[0], { data10k });
-    showAnalyzeUser(users[42]);
+    await showAnalyzeUser(users[44], { db });
     db.close();
 }
 
@@ -56,6 +64,7 @@ async function extractUsersMsg(channelId, { data10k }) {
         if (typeof users[userId] === 'undefined') {
             users[userId] = {
                 id: userId,
+                channelId: entry.channelId,
                 username: entry.userInfo.username,
                 messages: []
             };
@@ -69,20 +78,35 @@ async function extractUsersMsg(channelId, { data10k }) {
     return { users, messages };
 }
 
-function showAnalyzeUser(user) {
+async function showAnalyzeUser(user, { db }) {
     let ts = 0;
-    console.log(`User: ${user.username}`);
+    console.log('User: ' + user.username.yellow + `#${user.id}`.grey);
     for (let msg of user.messages) {
         console.log(
-            `${
+            `${user.username}_${
                 ts
                     ? `+${Math.floor(
                         (new Date(msg.date).getTime() - ts) / 1000
                     )}s`
-                    : '#'
-            }> ${msg.content}`
+                    : '+0s'
+            }> ` + msg.content.white
         );
         ts = new Date(msg.date).getTime();
+    }
+    /* Timeline */
+    /* Ban? */
+    const timeouts = await db
+        .collection('timeouts')
+        .find({
+            username: user.username,
+            channelId: user.channelId
+        })
+        .toArray();
+    if (timeouts.length) {
+        console.log('BAN ' + String(timeouts.length).blue + ' times');
+        for (let entry of timeouts) {
+            console.log(`- ${dateFormat('dd/MM/yyyy hh:mm:ss', entry.date)}`);
+        }
     }
 }
 
