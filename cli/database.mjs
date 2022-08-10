@@ -7,7 +7,9 @@ async function dbConnect() {
     const client = new MongoClient(MONGODB_CONNECT_STRING);
     try {
         await client.connect();
-        return client.db();
+        let db = client.db();
+        db.close = () => client.close();
+        return db;
     } catch (e) {
         console.error(e);
         return false;

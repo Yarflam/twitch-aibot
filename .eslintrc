@@ -1,6 +1,6 @@
 {
     "parserOptions": {
-        "ecmaVersion": 8,
+        "ecmaVersion": 2022,
         "sourceType": "module",
         "ecmaFeatures": {}
     },
@@ -11,7 +11,9 @@
         "node": true,
         "mocha": false
     },
-    "globals": {},
+    "globals": {
+        "import": true
+    },
     "extends": ["eslint:recommended"],
     "rules": {
         "no-console": "off",

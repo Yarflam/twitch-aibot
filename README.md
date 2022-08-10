@@ -5,7 +5,16 @@
 1. Install node_modules `npm i`
 2. Copy `sample.env` to `.env` and set the constants.
 
-## Steps
+## Usages
+
+Analyze
+
+```bash
+npm run analyze
+node index.mjs analyze # or directly
+```
+
+## Work steps
 
 1. Data analyze
 2. Build extractors
@@ -28,7 +37,7 @@ _messages_
 -   expiresAt
 -   date
 
-**timeouts**
+_timeouts_
 
 -   username
 -   duration

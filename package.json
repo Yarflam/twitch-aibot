@@ -25,6 +25,7 @@
     },
     "homepage": "https://github.com/Yarflam/twitch-aibot#readme",
     "dependencies": {
+        "dirfilename": "^1.1.1",
         "dotenv": "^16.0.1",
         "eslint": "^8.21.0",
         "mongodb": "^4.8.1",
